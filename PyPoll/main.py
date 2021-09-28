@@ -1,3 +1,11 @@
+# Create a Python script that analyzes the votes and calculates each of the following:
+    # The total number of votes cast
+    # A complete list of candidates who received votes
+    # The percentage of votes each candidate won
+    # The total number of votes each candidate won
+    # The winner of the election based on popular vote 
+
+
 # import csv file
 import csv
 
@@ -16,19 +24,13 @@ with open(csvpath) as csvfile:
     csv_header = next(csvreader)
     print(f'Header: {csv_header}')
 
-# Create a Python script that analyzes the votes and calculates each of the following:
-    # The total number of votes cast
-    # A complete list of candidates who received votes
-    # The percentage of votes each candidate won
-    # The total number of votes each candidate won
-    # The winner of the election based on popular vote 
-
     # Variables Defined/empty lists (buckets)
     total_votes = 0
-    candidate_list = []
+    candidates = []
     vote_percentage = []
     total_votes_won = []
     winner = []
+    candidate_list = []
 
     # Create dictionary to append candidate names and vote count. 
     votes_dict = {}
@@ -38,12 +40,19 @@ with open(csvpath) as csvfile:
         
         # Total vote count
         total_votes += 1
-    
 
+        # Create poll dictionary
+        # Get total vote count for each candidate
+        if row[2] in votes_dict:
+            votes_dict[row[2]] += 1
+        else: 
+            votes_dict[row[2]] = 1
+        print(votes_dict)    
+    
     
     
     # The total number of votes cast
-    print(total_votes)
+    # print(total_votes)
 
 
 
