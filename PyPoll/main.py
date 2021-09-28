@@ -5,7 +5,7 @@
     # The total number of votes each candidate won
     # The winner of the election based on popular vote 
 
-
+# dependencies
 # import csv file
 import csv
 
@@ -25,14 +25,15 @@ with open(csvpath) as csvfile:
     print(f'Header: {csv_header}')
 
     # Variables Defined/empty lists (buckets)
-    total_votes = 0
-    candidates = []
+    total_votes = 0        #number of votes
+    candidate_list = []    #list of all candidates
+    candidate = []
     vote_percentage = []
-    total_votes_won = []
-    winner = []
-    candidate_list = []
+    vote_count = []
+    winning_count = []     #correspond to number of votes
+    winner = []            #empty string to be changed to name of winner
 
-    # Create dictionary to append candidate names and vote count. 
+    # Create dictionary to append candidate names and number of votes each candidate received 
     votes_dict = {}
 
     # Read through each row of data after the header
@@ -40,22 +41,49 @@ with open(csvpath) as csvfile:
         
         # Total vote count
         total_votes += 1
-
+        
         # Create poll dictionary
-        # Get total vote count for each candidate
+        # Get complete list of candidates who received votes
         if row[2] in votes_dict:
             votes_dict[row[2]] += 1
         else: 
             votes_dict[row[2]] = 1
-        print(votes_dict)    
+        #print(votes_dict) 
+        
+        # Get the candidate name from each row
+        candidate_name = row[2]
+
+        # If candidate is not in dictionary, add candidate to list and track that candidate's vote count 
+        if candidate_name not in candidate_list:
+            candidate_list.append(candidate_name)
+            votes_dict[candidate_name] = 0
+            print(candidate_list)
+
+        # Add a vote to the candidate's count
+        votes_dict[candidate_name] = votes_dict[candidate_name] + 1
+
+    # Get the vote count and percentage
+    #for candidate in votes_dict:
+        #votes_count = votes_dict.get(candidate)
+        #vote_percentage = float(votes_count) / float(total_votes) * 100
+        #print(vote_percentage)
+
+
+    # Find the winner count and candidate
     
-    
+        
+    #print each candidate voter results
+    #poll_results = f"{candidate}: {vote_percentage: .3f}% ({votes})\n"
+
+
+
     
     # The total number of votes cast
     # print(total_votes)
 
-
-
+# Export the results to text file
+#with open("results.txt", "w") as file:
+    #file.write(results)
 
 #Analysis should look similiar to the one below:
 #```text
@@ -71,3 +99,21 @@ with open(csvpath) as csvfile:
   #Winner: Khan
   #-------------------------
   #```
+
+    #results = f'''
+    #Election Results
+    #----------------------------\n
+    #"Total Votes: {total_votes}\n"
+    #----------------------------\n
+
+ 
+   
+
+    
+
+        
+        
+
+
+
+
