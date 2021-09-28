@@ -14,5 +14,51 @@ with open(csvpath) as csvfile:
 
     # Read the header row first (skip this step if there is now header)
     csv_header = next(csvreader)
-    print(f'CSV Header: {csv_header}')
+    print(f'Header: {csv_header}')
+
+# Create a Python script that analyzes the votes and calculates each of the following:
+    # The total number of votes cast
+    # A complete list of candidates who received votes
+    # The percentage of votes each candidate won
+    # The total number of votes each candidate won
+    # The winner of the election based on popular vote 
+
+    # Variables Defined/empty lists (buckets)
+    total_votes = 0
+    candidate_list = []
+    vote_percentage = []
+    total_votes_won = []
+    winner = []
+
+    # Create dictionary to append candidate names and vote count. 
+    votes_dict = {}
+
+    # Read through each row of data after the header
+    for row in csvreader:
+        
+        # Total vote count
+        total_votes += 1
     
+
+    
+    
+    # The total number of votes cast
+    print(total_votes)
+
+
+
+
+#Analysis should look similiar to the one below:
+#```text
+  #Election Results
+  #-------------------------
+  #Total Votes: 3521001
+  #-------------------------
+  #Khan: 63.000% (2218231)
+  #Correy: 20.000% (704200)
+  #Li: 14.000% (492940)
+  #O'Tooley: 3.000% (105630)
+  #-------------------------
+  #Winner: Khan
+  #-------------------------
+  #```
