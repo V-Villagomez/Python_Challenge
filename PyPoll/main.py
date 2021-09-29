@@ -65,12 +65,19 @@ with open(csvpath) as csvfile:
     print(total_votes)
     #print(votes_dict)
 
-    winner_votes = 0
+    winner_votes = 0   #variable to help find winner, starts w/ 0, as look at candidate votes, update this variable, as loop find highest number votes
+    winner_name = ""
 
     # Get the vote count and percentage
     for k, v in votes_dict.items():
         print(f'{k}: {round(v/total_votes * 100, 3)}% ({v})')
 
+        if v > winner_votes:
+            winner_votes = v
+            winner_name = k
+
+
+    print(f'The Winner is: {winner_name} with {winner_votes} votes')
 
     # Find the winner count and candidate
 
