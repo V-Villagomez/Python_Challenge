@@ -66,33 +66,31 @@ with open(csvpath) as csvfile:
 
 #Analysis below:
 
+# Export the results to text file
+
+
     results = f'''
     Election Results
 
-    ----------------------------\n
+    ----------------------------
     
-    "Total Votes: {total_votes}\n"
+    Total Votes: {total_votes}
     
-    ----------------------------\n
+    ----------------------------\n'''
     
-    "print(f'{k}: {round(v/total_votes * 100, 3)}% ({v})')\n"
- 
-    ----------------------------\n
+    votes_text = ""
+    for k, v in votes_dict.items():
+        votes_text += f'    {k}: {round(v/total_votes * 100, 3)}% ({v})\n'
 
-    "print(f'The Winner is: {winner_name} with {winner_votes} votes')\n"
+    results += votes_text
+    results += f'''
+    ----------------------------
 
-    ----------------------------\n
+    The Winner is {winner_name} with {winner_votes} votes
+
+    ----------------------------
     '''
+
    
-
-# Export the results to text file
-
     with open("results.txt", "w") as file:
         file.write(results)
-
-        
-        
-
-
-
-
