@@ -26,12 +26,7 @@ with open(csvpath) as csvfile:
 
     # Variables Defined/empty lists (buckets)
     total_votes = 0        #number of votes
-    candidate_list = []    #list of all candidates
-    candidate = []
-    vote_percentage = []
-    vote_count = []
-    winning_votes = 0      #correspond to number of votes
-    winner = ""            #empty string to be changed to name of winner
+
 
     # Create dictionary to append candidate names and number of votes each candidate received 
     votes_dict = {}
@@ -39,7 +34,7 @@ with open(csvpath) as csvfile:
     # Read through each row of data after the header
     for row in csvreader:
         
-        # Total vote count
+        # The total number of votes cast
         total_votes += 1
         
         # Create poll dictionary
@@ -48,77 +43,52 @@ with open(csvpath) as csvfile:
             votes_dict[row[2]] += 1
         else: 
             votes_dict[row[2]] = 1
-        #print(votes_dict) 
-        
-        # Get the candidate name from each row
-        #candidate_name = row[2]
-
-        # If candidate is not in dictionary, add candidate to list and track that candidate's vote count 
-        #if candidate_name not in candidate_list:
-            #candidate_list.append(candidate_name)
-            #votes_dict[candidate_name] = 0
-            #print(candidate_list)
-
-        # Add a vote to the candidate's count
-        #votes_dict[candidate_name] = votes_dict[candidate_name] + 1
 
     print(total_votes)
     #print(votes_dict)
 
+    # Create additional variables 
     winner_votes = 0   #variable to help find winner, starts w/ 0, as look at candidate votes, update this variable, as loop find highest number votes
     winner_name = ""
 
     # Get the vote count and percentage
     for k, v in votes_dict.items():
         print(f'{k}: {round(v/total_votes * 100, 3)}% ({v})')
-
+    
+    # Find the winner
         if v > winner_votes:
             winner_votes = v
             winner_name = k
 
-
     print(f'The Winner is: {winner_name} with {winner_votes} votes')
 
-    # Find the winner count and candidate
 
-        
-    #print each candidate voter results
 
+#Analysis below:
+
+    results = f'''
+    Election Results
+
+    ----------------------------\n
     
-    # The total number of votes cast
+    "Total Votes: {total_votes}\n"
     
+    ----------------------------\n
+    
+    "print(f'{k}: {round(v/total_votes * 100, 3)}% ({v})')\n"
+ 
+    ----------------------------\n
 
+    "print(f'The Winner is: {winner_name} with {winner_votes} votes')\n"
+
+    ----------------------------\n
+    '''
+   
 
 # Export the results to text file
 
-#with open("results.txt", "w") as file:
-    #file.write(results)
-
-#Analysis should look similiar to the one below:
-#```text
-  #Election Results
-  #-------------------------
-  #Total Votes: 3521001
-  #-------------------------
-  #Khan: 63.000% (2218231)
-  #Correy: 20.000% (704200)
-  #Li: 14.000% (492940)
-  #O'Tooley: 3.000% (105630)
-  #-------------------------
-  #Winner: Khan
-  #-------------------------
-  #```
-
-    #results = f'''
-    #Election Results
-    #----------------------------\n
-    #"Total Votes: {total_votes}\n"
-    #----------------------------\n
-
- 
-   
-
-    
+    with open("results.txt", "w") as file:
+        file.write(results)
 
         
         
